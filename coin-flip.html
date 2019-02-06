@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		img {
+			width : 200px;
+			height: 200px;
+		}
+
+		.hide {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<h1>Flip A Coin!</h1>
+	
+	<h2>Guess Heads or Tails: </h2>
+
+	<button data-choice="0">Heads</button>
+	<button data-choice="1">Tails</button>
+
+	<div id="coinVisual">
+		<img class="hide" id="headsImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxOxTDmwzBvr6gqN_3PwaMSF4KjEICVYc1zhqlU9sNlSjW2B-3uA">
+
+		<img class="hide" id="tailsImage" src="http://www.e-allmoney.com/coins/afr/img/1dji5YAal.gif">
+	</div>
+
+	<p>
+		You guessed: 
+		<span id="userChoice"></span>
+	</p>
+
+	<p>Wins <span id="wins"></span></p> 
+	<p>Losses <span id="losses"></span></p> 
+	<p>Heads chosen <span id="headsChosen"></span></p> 
+	<p>Tails chosen <span id="tailsChosen"></span></p> 
+
+	<script
+	  src="https://code.jquery.com/jquery-3.3.1.min.js"
+	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	  crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		var wins = 0;
+		var losses = 0;
+		var headsChosen = 0;
+		var tailsChosen = 0;
+		$('#headsChosen').text(headsChosen);
+		$('#tailsChosen').text(tailsChosen);
+		$('#wins').text(wins);
+		$('#losses').text(losses);
+
+		$('button').on('click', function(){
+			var button = $(this);
+			$('#headsImage').addClass('hide');
+			$('#tailsImage').addClass('hide');
+
+			//0 or 1
+			var computerFlip = Math.floor(Math.random()*2);
+			var userChoice = parseInt(button.attr('data-choice'));
+
+			if (computerFlip == 0) $('#headsImage').removeClass('hide');
+			else $('#tailsImage').removeClass('hide');
+
+			//one way
+				if (userChoice == 0) {
+					headsChosen++;
+					$('#headsChosen').text(headsChosen);
+					$('#userChoice').text('Heads');
+				} else {
+					
+					tailsChosen++;
+					$('#tailsChosen').text(tailsChosen);
+					$('#userChoice').text('Tails');
+				}
+
+			//another way
+				// $('#userChoice').text((userChoice == 0) ? 'Heads' : 'Tails');
+
+			if (computerFlip == userChoice){
+				wins++;
+				$('#wins').text(wins);
+			}else {
+				losses++;
+				$('#losses').text(losses);
+			}
+
+
+		});
+	</script>
+</body>
+</html>
+
+
+
+
+
+

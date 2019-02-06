@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title></title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="time"></div>
+
+		<button id="start">start</button>
+		<button id="stop">stop</button>
+		<button id="reset">reset</button>
+		<button id="lap">lap</button>
+
+		<div id="laps_"></div>
+	</div>
+
+	<script
+	  src="https://code.jquery.com/jquery-3.3.1.min.js"
+	  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	  crossorigin="anonymous"></script>
+	<script type="text/javascript">
+	
+		var seconds = 0;
+		var timer;
+		$('#time').text(seconds);
+
+		function startTimer(){
+			seconds++;
+			$('#time').text(seconds);
+		}
+
+		$('#start').on('click', function(){
+			timer = setInterval(startTimer, 1000);
+		});
+
+		$('#stop').on('click', function(){
+			clearInterval(timer);
+		});
+
+		$('#reset').on('click', function(){
+			clearInterval(timer);
+			seconds = 0;
+			$('#time').text(seconds);
+		});
+
+		$('#lap').on('click', function(){
+			var secondsP = $('<p>').text(seconds);
+			$('#laps_').prepend(secondsP)
+		});
+		
+	</script>
+</body>
+</html>
+
+
+
+
+
+
