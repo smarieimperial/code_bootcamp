@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Fridge Magnets</title>
+</head>
+
+<!-- CSS Styles (These styles are provided to you. Don't touch these!) -->
+<style>
+  body {
+    background: url(assets/fridge.png) no-repeat;
+  }
+
+  .letter {
+    width: 30px;
+    height: 30px;
+    border-style: solid;
+    padding: 2px;
+    float: left;
+    margin: 2px;
+  }
+
+  .letter-button-color {
+    color: darkcyan;
+  }
+
+  .fridge-color {
+    color: orange;
+  }
+
+  #display {
+    margin-top: 78px;
+    height: 500px;
+    width: 220px;
+    margin-left: 60px;
+  }
+
+  #buttons {
+    padding-top: 60px;
+  }
+
+  #clear {
+    margin-left: 20px;
+    font-size: 25px;
+    color: black;
+    border-style: solid;
+    width: 100px;
+  }
+</style>
+
+<body>
+  <!-- Fridge Game - do not touch the html -->
+  <div id="display"></div>
+  <div id="buttons"></div>
+  <button id="clear">clear</button>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    //put a row of buttons
+    var allAddButton = "ABCDEFGHIJKLMNOPQRSTUVWXYZ_"
+    var newButton;
+    for (var i=0;i<allAddButton.length;i++){
+      newButton = $('<button>');
+      newButton.text(allAddButton[i]);
+      newButton.addClass('letter').addClass("letter-button-color");
+      $('#buttons').append(newButton);
+    }
+    // everytime a button is clicked, display magnet
+   
+    $(document).on("click",".letter", function(){
+      var magnetLetter = $(this).text();
+      console.log(magnetLetter);
+      var newMagnet = $('<div>');
+      newMagnet.text(magnetLetter);
+      newMagnet.addClass('letter').addClass("fridge-color");
+      $('#display').append(newMagnet);
+    });
+
+    $(document).on("click","#clear",function(){
+      $('.fridge-color').remove();
+    })
+  </script>
+</body>
+
+</html>
