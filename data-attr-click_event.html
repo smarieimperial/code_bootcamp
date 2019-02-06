@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+</head>
+<body>
+	<div id="container">
+		<button data-actor="Russell Crowe">The Terminator</button>
+
+		<button data-actor="Michael Biehn">The Terminator</button>
+
+		<button data-actor="Chadwick Boseman">Black Panther</button>
+	</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+	// on click of a button, alert the actor.
+	// $('button).on('click'), -> puts a click event on all of the 3 button above.
+	// $(this).data('actor') -> we are grabbing the data attribute of actor and alerting the name after the equal sign in the double-quotes.
+	$('button').on('click', function() {
+		alert($(this).data('actor'));
+	});
+
+	
+</script>
+</body>
+</html>
